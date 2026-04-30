@@ -1,0 +1,8 @@
+{
+  "adminUser": {
+    "nome": "Fulano da Silva",
+    "email": "fulano@qa.com",
+    "password": "teste",
+    "administrador": "true"
+  }
+}
