@@ -4,9 +4,9 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -37,23 +37,24 @@ export default defineConfig({
     {
       name: 'api',
       testDir: './api/specs',
+      use: { baseURL: process.env.URL_API },
     },
     {
       name: 'ui-chromium',
-      testDir: './e2e/specs',
-      use: { ...devices['Desktop Chrome'] },
+      testDir: './front/specs',
+      use: { baseURL: process.env.URL_UI, ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'ui-firefox',
-      testDir: './e2e/specs',
-      use: { ...devices['Desktop Firefox'] },
+      testDir: './front/specs',
+      use: { baseURL: process.env.URL_UI, ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'ui-webkit',
-      testDir: './e2e/specs',
-      use: { ...devices['Desktop Safari'] },
+      testDir: './front/specs',
+      use: { baseURL: process.env.URL_UI, ...devices['Desktop Safari'] },
     },
 
     /* Test against mobile viewports. */
